@@ -1,6 +1,6 @@
 alert('Hello, World!')
 
-$.get( "hygxyz.csv", function( data ) {
+$.get( "app/hygxyz.csv", function( data ) {
   var stars = $.csv.toObjects(data)
   stars.forEach(function(entry) {
     

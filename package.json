@@ -1,0 +1,16 @@
+{
+  "name": "astronomy-demo",
+  "version": "0.0.1",
+  "author": "Alex Ingraham and Ravi Morbia <masamune2002@gmail.com>",
+  "description": "A simple astronomy-related demo of a handful of web technologies",
+  "contributors": [ 
+    {
+      "name": "Alex Ingraham",
+      "email": "masamune2002@gmail.com"
+    },
+	{
+      "name": "Ravi Morbia",
+      "email": "rpm2011@gmail.com"
+    }
+  ]
+}
