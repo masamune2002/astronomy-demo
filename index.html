@@ -1,12 +1,18 @@
-<html>
+<html ng-app="astronomy-demo">
     <head>
         <link rel="stylesheet" type="text/css" href="app/styles/index.css">
-		<script src="bower_components/jquery/dist/jquery.js"></script>
-		<script src="bower_components/angular/angular.js"></script>
-		<script src="bower_components/jquery-csv/src/jquery.csv.js"></script>
+		<script src="vendor/jquery/dist/jquery.js"></script>
+		<script src="vendor/angular/angular.js"></script>
+		<script src="vendor/jquery-csv/src/jquery.csv.js"></script>
+		<script type="text/javascript" src="app/scripts/app.js"></script>
 		<script type="text/javascript" src="app/scripts/astronomy.js"></script>
     </head>
-    <body>
-        <h1 class='title'>Astronomy!!!!</span>
+    <body ng-controller="StarController">
+        <h1 class='title'>Stars!!!!</h1>
+		<ul>
+			<li ng-repeat="star in stars">
+				{{ getStarName(star) }}
+			</li>
+		</ul>
     </body>
 </html>
