@@ -8,13 +8,18 @@ Dependencies
 To build this application, you will need the following dependencies:
 
 * the [Node.js](http://www.nodejs.org/) JavaScript runtime.
+* the Git executable on your path
 
 Building astronomy-demo
 =======================
-To run the application, run
+To build the application, run
 
 ```npm install connect```
 
-followed by
+then
 
-```node app.js```
+```bower install```
+
+To run the application, run
+
+```node server/server.js```
