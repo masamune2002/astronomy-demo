@@ -1,11 +1,10 @@
 var app = angular.module('astronomy-demo', []);
-var starRecords;
 
 app.controller('StarController', function($scope, $http) {
 
 	$http({
       method: 'GET',
-      url: "./app/assets/hygxyz-5000.csv",
+      url: "./assets/data/hygxyz-small.csv",
       transformResponse: function(issuelist) {
         // Transform CSV file into a JSON object
         var json = $.csv.toObjects(issuelist);

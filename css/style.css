@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body{
-	background-image:url('img/space_1920x1080.jpg');
+	background-image:url('../assets/img/space_1920x1080.jpg');
 	/*background-attachment: fixed;
 	background-repeat:no-repeat;*/
 	
@@ -104,13 +104,20 @@ h3{
 	overflow: scroll;
 	}
 	
-p{margin-bottom:0px; height: 30px; font-size: 1.2em;}
+li{
+	margin-bottom:0px; 
+	height: 30px;
+	list-style-position: inside;
+	font-size: 1.2em;
+	padding-left: 20px;
+}
+
 .dark{
 	background-color: rgba(51, 51, 51, 0.75);
-	}
+}
 .light{
 	background-color: rgba(85, 85, 85, 0.75);
-	}	
+}	
 	
 #left-side, #middle, #right-side{
 	float: left;

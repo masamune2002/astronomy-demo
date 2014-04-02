@@ -1,22 +1,70 @@
+<!doctype html>
 <html ng-app="astronomy-demo">
-    <head>
-        <link rel="stylesheet" type="text/css" href="app/styles/index.css">
-		<link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-		<script src="vendor/jquery/dist/jquery.js"></script>
-		<script src="vendor/angular/angular.js"></script>
-		<script src="vendor/jquery-csv/src/jquery.csv.js"></script>
-		<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="app/scripts/app.js"></script>
-		<title>Astronomy Demo</title>
-    </head>
-    <body ng-controller="StarController">
-        <h1 class='title'>Stars!!!!</h1>
-		<div class="star-list">
-			<ul>
-				<li ng-repeat="star in stars">
+<head>
+	<meta charset="utf-8">
+	<title>Search the Stars</title>
+
+	<link rel="stylesheet" type="text/css" href="vendor/foundation/css/foundation.css">
+	<link rel="stylesheet" type="text/css" href="vendor/foundation/css/foundation.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/foundation/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script src="vendor/jquery/dist/jquery.js"></script>
+	<script src="vendor/angular/angular.js"></script>
+	<script src="vendor/jquery-csv/src/jquery.csv.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+
+<body ng-controller="StarController">
+<div id="title">
+<div class="center" id="space"> <img src="assets/img/welcome.png"> </div>
+<div class="center" id="line"> <img src="assets/img/titlebreak.png"> </div>
+<div class="center" id="frontier"> <img src="assets/img/finalfrontier.png"> </div>
+</div>
+
+<div id="content">
+<div id="left-side">
+	<div id="search"> <img src="assets/img/searchbox.png"> </div>
+	<div class="explore"> <img src="assets/img/explore.png" class="explore"> </div>
+
+	<div id="filter">
+		<div>
+			<div id="left-title"> <img src="assets/img/lefttitle.png"> </div>
+			<div id="stars"> <img src="assets/img/stars.png"> </div>
+			<div id="drop-arrow"> <img src="assets/img/droparrow.png"> </div>
+			<div id="left-panel"> <img src="assets/img/left-panel.png"> </div>
+			<div id="filter-list">
+				<div> <img src="assets/img/distance.png"> </div> <br>
+				<div> <img src="assets/img/age.png"> </div> <br>
+				<div> <img src="assets/img/size.png"> </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="middle">
+    <div>
+    	<div id="results">
+			<h3> Results </h3>
+			<ol class="lines">
+				<li ng-class-odd="'light'" ng-class-even="'dark'" ng-repeat="star in stars">
 					{{ getStarName(star) }}
 				</li>
-			</ul>
+			</ol>
+        </div>
+    </div>
+</div>
+
+<div id="right-side">
+	<div id="filter">
+		<div>
+			<div id="left-title"> <img src="assets/img/righttitle.png"> </div>
+			<div id="quickinfo"> <img src="assets/img/quickinfo.png"> </div>
+			<div id="right-panel"> <img src="assets/img/right-panel.png"> </div>
 		</div>
-    </body>
+	</div>
+</div>
+
+</div>
+</body>
 </html>
