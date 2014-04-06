@@ -7,7 +7,7 @@
     "jquery-csv": "latest",
     "bootstrap": "~3.1.1",
     "foundation": "~5.2.1",
-    "ngInfiniteScroll": "~1.0.1"
+    "ngInfiniteScroll": "1.1.0"
   },
   "private": true
 }
