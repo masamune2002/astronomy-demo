@@ -16,13 +16,18 @@
 </head>
 
 <body ng-controller="StarController">
+<!--Title-->
 <div id="title">
 <div class="center" id="space"> <img src="assets/img/welcome.png"> </div>
 <div class="center" id="line"> <img src="assets/img/titlebreak.png"> </div>
 <div class="center" id="frontier"> <img src="assets/img/finalfrontier.png"> </div>
 </div>
+<!--End Ttle-->
 
+<!--Content-->
 <div id="content">
+
+<!--Left-->
 <div id="left-side">
 	<div id="search"> <img src="assets/img/searchbox.png"> </div>
 	<div class="explore"> <img src="assets/img/explore.png" class="explore"> </div>
@@ -34,14 +39,17 @@
 			<div id="drop-arrow"> <img src="assets/img/droparrow.png"> </div>
 			<div id="left-panel"> <img src="assets/img/left-panel.png"> </div>
 			<div id="filter-list">
-				<div> <img src="assets/img/distance.png"> </div> <br>
-				<div> <img src="assets/img/age.png"> </div> <br>
-				<div> <img src="assets/img/size.png"> </div>
+				<div id="skew-dist"> <h2>Distance</h2> </div>
+				<div id="skew"> <h2>Size</h2> </div>
+                <div id="skew"> <h2>Name</h2> </div>
+                <div id="skew"> <h2>Magnitude</h2> </div>
+                <div id="skew"> <h2>Color</h2> </div>
 			</div>
 		</div>
 	</div>
 </div>
 
+<!--Middle-->
 <div id="middle">
     <div>
     	<div id="results">
@@ -55,6 +63,7 @@
     </div>
 </div>
 
+<!--Right-->
 <div id="right-side">
 	<div id="filter">
 		<div>
@@ -66,5 +75,6 @@
 </div>
 
 </div>
+<!--End Content-->
 </body>
 </html>

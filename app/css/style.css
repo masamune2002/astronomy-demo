@@ -15,10 +15,6 @@ body{
 	background-position:top;
 	}
 	
-#content{
-	postion: absolute;
-	}
-	
 #title{
 	margin-top: 55px;
 	}
@@ -60,11 +56,11 @@ margin-right:auto;
 	}
 #right-panel{
 	margin-left: 176px;
-	margin-top:-27px;
+	margin-top:-34px;
 	}
 #drop-arrow{
 	margin-left: 436px;
-	margin-top:-70px;
+	margin-top:-85px;
 	}
 	
 #search{
@@ -78,7 +74,7 @@ margin-right:auto;
 	}
 	
 #filter-list{
-	margin-top: -270px;
+	margin-top: -320px;
 	margin-left: 180px;
 	}
 	
@@ -101,7 +97,7 @@ h3{
 	margin: 0 auto;
 	width: 760px; 
 	height: 500px;
-	overflow: scroll;
+	overflow-Y: scroll;
 	}
 	
 li{
@@ -136,6 +132,27 @@ li{
 	}
 	
 #content{
+	position: absolute;
 	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
 	}
 	
+#skew{
+	color: white;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	-ms-transform: skew(0deg,-16deg); /* IE 9 */
+	-webkit-transform: skew(0deg,-16deg); /* Chrome, Safari, Opera */
+	transform: skew(0deg,-16deg);
+	}
+
+#skew-dist{
+	color: white;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	-ms-transform: skew(0deg,-10deg); /* IE 9 */
+	-webkit-transform: skew(0deg,-10deg); /* Chrome, Safari, Opera */
+	transform: skew(0deg,-10deg);
+	margin-bottom: -16px;
+	}
