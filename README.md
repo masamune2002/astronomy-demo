@@ -14,7 +14,7 @@ Building astronomy-demo
 =======================
 To build the application, run
 
-```npm install connect```
+```npm install```
 
 then
 
@@ -22,4 +22,4 @@ then
 
 To run the application, run
 
-```node server/server.js```
+```node astronomy-demo.js```
