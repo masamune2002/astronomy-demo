@@ -13,6 +13,7 @@
 	<script src="vendor/angular/angular.js"></script>
 	<script src="vendor/jquery-csv/src/jquery.csv.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
+    <script src="js/vendor/custom.modernizr.js"></script>
 </head>
 
 <body ng-controller="StarController">
@@ -20,30 +21,35 @@
 <div id="title">
 <div class="center" id="space"> <img src="assets/img/welcome.png"> </div>
 <div class="center" id="line"> <img src="assets/img/titlebreak.png"> </div>
-<div class="center" id="frontier"> <img src="assets/img/finalfrontier.png"> </div>
+<div class="center" id="frontier"> <h1> The Final Frontier </h1> </div>
 </div>
 <!--End Ttle-->
 
 <!--Content-->
 <div id="content">
-
+    
 <!--Left-->
 <div id="left-side">
-	<div id="search"> <img src="assets/img/searchbox.png"> </div>
-	<div class="explore"> <img src="assets/img/explore.png" class="explore"> </div>
-
+	<div id="search"> 
+    <form id="tfnewsearch" method="get" action="http://www.google.com">
+		        <input type="text" class="tftextinput" name="q" placeholder="search" size="40" maxlength="120"><input type="submit" value="Explore" class="tfbutton">
+		</form>
+	<div class="tfclear"></div>
+	<!--<div class="explore"> <h5>Explore</h5> </div>-->
+	</div>
 	<div id="filter">
 		<div>
-			<div id="left-title"> <img src="assets/img/lefttitle.png"> </div>
-			<div id="stars"> <img src="assets/img/stars.png"> </div>
+			<div id="left-title"> <img src="assets/img/lefttitle.png"> 
+				<div id="stars" class="has-dropdown"> <h4 class="glow skew-stars">Stars</h4> </div>
+            </div>
 			<div id="drop-arrow"> <img src="assets/img/droparrow.png"> </div>
 			<div id="left-panel"> <img src="assets/img/left-panel.png"> </div>
-			<div id="filter-list">
-				<div id="skew-dist"> <h2>Distance</h2> </div>
-				<div id="skew"> <h2>Size</h2> </div>
-                <div id="skew"> <h2>Name</h2> </div>
-                <div id="skew"> <h2>Magnitude</h2> </div>
-                <div id="skew"> <h2>Color</h2> </div>
+			<div id="filter-list" class="dropdown">
+				<div id="skew-dist"> <a href="#"> <h2>Distance</h2> </a> </div>
+				<div id="skew"> <a href="#"> <h2>Size</h2> </a> </div>
+                <div id="skew"> <a href="#"> <h2>Name</h2> </a> </div>
+                <div id="skew"> <a href="#"> <h2>Magnitude</h2> </a> </div>
+                <div id="skew"> <a href="#"> <h2>Color</h2> </a> </div>
 			</div>
 		</div>
 	</div>
@@ -67,8 +73,9 @@
 <div id="right-side">
 	<div id="filter">
 		<div>
-			<div id="left-title"> <img src="assets/img/righttitle.png"> </div>
-			<div id="quickinfo"> <img src="assets/img/quickinfo.png"> </div>
+			<div id="left-title"> <img src="assets/img/righttitle.png"> 
+				<div id="quickinfo"> <h4 class="glow skew-qinfo">Quick Info</h4> </div>
+            </div>
 			<div id="right-panel"> <img src="assets/img/right-panel.png"> </div>
 		</div>
 	</div>
