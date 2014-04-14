@@ -1,23 +1,40 @@
-var app = angular.module('astronomy-demo', []);
+var app = angular.module('astronomy-demo', ['infinite-scroll']);
 
 app.controller('StarController', function($scope, $http) {
 
-	$http({
-      method: 'GET',
-      url: "./assets/data/hygxyz-small.csv",
-      transformResponse: function(issuelist) {
-        // Transform CSV file into a JSON object
-        var json = $.csv.toObjects(issuelist);
-        return json;
-      },
-      cache: true,
-    })
-    .success(function(issuelist, status) {
-        $scope.stars = issuelist;
-    });
+	var lim = 250;
+	var off = 0;
+	var selectedFilter = "Distance";
+	$scope.stars = [];
 	
-	$scope.getStarName = function(star)
-   {
+	$scope.switchFilter = function(filter) {
+		selectedFilter = filter;
+		$scope.initStars();
+	}
+	
+	$scope.initStars = function() {
+		off = 0;
+		$scope.stars = [];
+		$scope.loadStars();
+		$scope.selectedStar = $scope.stars[0];
+	}
+	
+	$scope.loadStars = function() {
+		$http.get('/stars', {params: {limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
+			$scope.stars.push.apply($scope.stars ,stars);
+			off += lim;
+		});
+	}
+	
+	$scope.select= function(item) {
+		$scope.selectedStar = item;
+    };
+	
+	$scope.itemClass = function(item) {
+        return item === $scope.selectedStar ? 'active' : undefined;
+    };
+	
+	$scope.getStarName = function(star) {
       if (star.ProperName.length != 0) {
 		return star.ProperName;
 	  } else if (star.BayerFlamsteed != 0) {
@@ -34,5 +51,16 @@ app.controller('StarController', function($scope, $http) {
 		return "UNKNOWN " + star.StarID;
 	  }
    };
-	
+   
+   $scope.initStars();
+}).directive('ngScroll', function() {
+    return function(scope, elm, attr) {
+        var raw = elm[0];
+        
+        elm.bind('scroll', function() {
+            if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+                scope.$apply(attr.ngScroll);
+            }
+        });
+    };
 });

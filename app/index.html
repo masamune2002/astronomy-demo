@@ -27,7 +27,6 @@
 
 <!--Content-->
 <div id="content">
-    
 <!--Left-->
 <div id="left-side">
 	<div id="search"> 
@@ -47,11 +46,11 @@
             </div>
 			<div id="left-panel"> <img src="assets/img/left-panel.png"> </div>
 			<div id="filter-list">
-				<div id="skew-dist"> <a href="#"> <h2>Distance</h2> </a> </div>
+				<div id="skew-dist" ng-click="switchFilter('Distance')"> <a href="#"> <h2>Distance</h2> </a> </div>
 				<div id="skew"> <a href="#"> <h2>Size</h2> </a> </div>
                 <div id="skew"> <a href="#"> <h2>Name</h2> </a> </div>
-                <div id="skew"> <a href="#"> <h2>Magnitude</h2> </a> </div>
-                <div id="skew"> <a href="#"> <h2>Color</h2> </a> </div>
+                <div id="skew" ng-click="switchFilter('AbsMag')"> <a href="#"> <h2>Magnitude</h2> </a> </div>
+                <div id="skew" ng-click="switchFilter('ColorIndex')"> <a href="#"> <h2>Color</h2> </a> </div>
 			</div>
 	</div>
 </div>
@@ -61,8 +60,8 @@
     <div>
     	<div id="results">
 			<h3> Results </h3>
-			<ol class="lines">
-				<li ng-class-odd="'light'" ng-class-even="'dark'" ng-repeat="star in stars">
+			<ol class="lines" ng-scroll="loadStars()">
+				<li ng-class-odd="'light'" ng-class-even="'dark'" ng-repeat="star in stars" ng-click="select(star)" ng-class="itemClass(star)">
 					{{ getStarName(star) }}
 				</li>
 			</ol>
@@ -77,7 +76,25 @@
 			<div id="left-title"> <img src="assets/img/righttitle.png"> 
 				<div id="quickinfo"> <h4 class="skew-qinfo">Quick Info</h4> </div>
             </div>
-			<div id="right-panel"> <img src="assets/img/right-panel.png"> </div>
+			<div id="right-panel"> <img src="assets/img/right-panel.png"> 
+				<ul ng-if="selectedStar">
+					<li ng-if="selectedStar.ProperName">Proper Name: {{selectedStar.ProperName}}</li>
+					<li ng-if="selectedStar.Distance">Distance: {{selectedStar.Distance}}</li>
+					<li ng-if="selectedStar.HIP">HIP: HIP {{selectedStar.HIP}}</li>
+					<li ng-if="selectedStar.HD">HD: HD {{selectedStar.HD}}</li>
+					<li ng-if="selectedStar.HR">HR: HR {{selectedStar.HR}}</li>
+					<li ng-if="selectedStar.Gliese">Gliese: {{selectedStar.Gliese}}</li>
+					<li ng-if="selectedStar.BayerFlamsteed">Bayer-Flamsteed: {{selectedStar.BayerFlamsteed}}</li>
+					<li ng-if="selectedStar.RA">RA: {{selectedStar.RA}}</li>
+					<li ng-if="selectedStar.PMRA">PMRA: {{selectedStar.PMRA}}</li>
+					<li ng-if="selectedStar.PMDec">PMDec: {{selectedStar.PMDec}}</li>
+					<li ng-if="selectedStar.RV">RV: {{selectedStar.RV}}</li>
+					<li ng-if="selectedStar.Mag">Magnitude: {{selectedStar.Mag}}</li>
+					<li ng-if="selectedStar.AbsMag">Absolue Magnitude: {{selectedStar.AbsMag}}</li>
+					<li ng-if="selectedStar.Spectrum">Spectrum: {{selectedStar.Spectrum}}</li>
+					<li ng-if="selectedStar.ColorIndex">Color Index: {{selectedStar.ColorIndex}}</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
