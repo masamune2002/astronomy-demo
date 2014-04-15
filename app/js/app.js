@@ -1,4 +1,4 @@
-var app = angular.module('astronomy-demo', ['infinite-scroll']);
+var app = angular.module('astronomy-demo', []);
 
 app.controller('StarController', function($scope, $http) {
 
