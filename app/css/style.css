@@ -118,7 +118,7 @@ margin-right:auto;
 	width:280px;
 	}
 	
-.fade{
+.fade *{
 	-moz-animation:fade 2.5s; /*Firefox*/
 	-webkit-animation:fade 2.5s; /* Chrome, Safari, Opera */
 	animation:fade 2.5s;

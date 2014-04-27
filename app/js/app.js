@@ -5,6 +5,7 @@ app.controller('StarController', function($scope, $http) {
 	var lim = 250;
 	var off = 0;
 	var selectedFilter = "Distance";
+	$scope.filterExtended = false;
 	$scope.stars = [];
 	var starsBuffered = [];
 	var currentSearch;
@@ -20,6 +21,10 @@ app.controller('StarController', function($scope, $http) {
 		$scope.loadStars();
 		$scope.selectedStar = $scope.stars[0];
 		$scope.bufferStars(5);
+	}
+	
+	$scope.toggleFilterPanel = function(){
+		$scope.filterExtended = !$scope.filterExtended;
 	}
 	
 	$scope.loadStars = function() {

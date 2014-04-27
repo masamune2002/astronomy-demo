@@ -33,24 +33,24 @@
 	<div class="tfclear"></div>
 	</div>
 	<div id="filter">
-			<div id="left-title"> <img src="assets/img/lefttitle.png"> </div>
-            <div id="left-title"> 
-            	<div id="stars"> 
-                	<a href="#"><h4 class="glow skew-stars">Stars</h4></a>
-                    <div id="triangle-shadow" class="grad"></div>
-                    <a href="#"><div id="triangle-down"></div></a>
-                </div> 
-            </div>
-			<div id="left-panel"> <img class="anim-left" src="assets/img/left-panel.png">
-			<div id="filter-list">
-
-				<div id="skew-dist" ng-click="switchFilter('Distance')"> <a href="#"> <h2 class="fade">Distance</h2> </a> </div>
-                <div id="skew"> <a href="#"> <h2 class="fade">Name</h2> </a> </div>
-                <div id="skew" ng-click="switchFilter('Mag')"> <a href="#"> <h2 class="fade">Magnitude</h2> </a> </div>
-                <div id="skew" ng-click="switchFilter('AbsMag')"> <a href="#"> <h2 class="fade">Absolute Magnitude</h2> </a> </div>
-                <div id="skew" ng-click="switchFilter('ColorIndex')"> <a href="#"> <h2 class="fade">Color</h2> </a> </div>
-
+			<div ng-click="toggleFilterPanel()">
+				<div id="left-title"> <img src="assets/img/lefttitle.png"> </div>
+				<div id="left-title"> 
+					<div id="stars"> 
+						<a href="#"><h4 class="glow skew-stars">Stars</h4></a>
+						<div id="triangle-shadow" class="grad"></div>
+						<a href="#"><div id="triangle-down"></div></a>
+					</div> 
+				</div>
 			</div>
+			<div id="left-panel"> <img ng-show="filterExtended" ng-class="{ 'anim-left': filterExtended }" src="assets/img/left-panel.png">
+				<div id="filter-list" ng-show="filterExtended" ng-class="{ 'fade': filterExtended }">
+					<div id="skew-dist" ng-click="switchFilter('Distance')"> <a href="#"> <h2>Distance</h2> </a> </div>
+					<div id="skew"> <a href="#"> <h2>Name</h2> </a> </div>
+					<div id="skew" ng-click="switchFilter('Mag')"> <a href="#"> <h2>Magnitude</h2> </a> </div>
+					<div id="skew" ng-click="switchFilter('AbsMag')"> <a href="#"> <h2>Absolute Magnitude</h2> </a> </div>
+					<div id="skew" ng-click="switchFilter('ColorIndex')"> <a href="#"> <h2>Color</h2> </a> </div>
+				</div>
             </div>
 	</div>
 </div>
