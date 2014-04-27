@@ -5,6 +5,7 @@ app.controller('StarController', function($scope, $http) {
 	var lim = 250;
 	var off = 0;
 	var selectedFilter = "Distance";
+	$scope.showFilter = false;
 	$scope.filterExtended = false;
 	$scope.stars = [];
 	var starsBuffered = [];
@@ -24,6 +25,9 @@ app.controller('StarController', function($scope, $http) {
 	}
 	
 	$scope.toggleFilterPanel = function(){
+		if(!$scope.showFilter) {
+			$scope.showFilter = true;
+		}
 		$scope.filterExtended = !$scope.filterExtended;
 	}
 	
@@ -81,24 +85,6 @@ app.controller('StarController', function($scope, $http) {
 	$scope.itemClass = function(item) {
         return item === $scope.selectedStar ? 'active' : undefined;
     };
-	
-	$scope.getStarName = function(star) {
-      if (star.ProperName.length != 0) {
-		return star.ProperName;
-	  } else if (star.BayerFlamsteed != 0) {
-		return star.BayerFlamsteed;
-	  } else if (star.Gliese != 0) {
-		return "Gliese " + star.Gliese;
-	  } else if (star.HR.length != 0) {
-		return "HR " + star.HR;
-	  } else if (star.HD.length != 0) {
-		return "HD " + star.HD;
-	  } else if (star.HIP.length != 0) {
-		return "HIP " + star.HIP;
-	  } else {
-		return "UNKNOWN " + star.StarID;
-	  }
-   };
    
    $scope.initStars();
 }).directive('ngScroll', function() {

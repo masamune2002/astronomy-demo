@@ -47,12 +47,12 @@
             </a> </div>
         </div>
       </div>
-      <div id="left-panel"> <img ng-class="{ 'anim-left': filterExtended, 'anim-left-close': !filterExtended }" src="assets/img/left-panel.png">
-        <div id="filter-list"  ng-class="{ 'fade': filterExtended, 'fade-back': !filterExtended }">
+      <div id="left-panel"> <img ng-show="showFilter" ng-class="{ 'anim-left': filterExtended, 'anim-left-close': !filterExtended }" src="assets/img/left-panel.png">
+        <div id="filter-list" ng-show="showFilter" ng-class="{ 'fade': filterExtended, 'fade-back': !filterExtended }">
           <div id="skew-dist" ng-click="switchFilter('Distance')"> <a href="#">
             <h2>Distance</h2>
             </a> </div>
-          <div id="skew"> <a href="#">
+          <div id="skew" ng-click="switchFilter('DisplayName')"> <a href="#">
             <h2>Name</h2>
             </a> </div>
           <div id="skew" ng-click="switchFilter('Mag')"> <a href="#">
@@ -75,7 +75,7 @@
       <div id="results">
         <h3> Results </h3>
         <ol class="lines" ng-scroll="requestStarBatch()">
-          <li ng-class-odd="'light'" ng-class-even="'dark'" ng-repeat="star in stars" ng-click="select(star)" ng-class="itemClass(star)"> {{ getStarName(star) }} </li>
+          <li ng-class-odd="'light'" ng-class-even="'dark'" ng-repeat="star in stars" ng-click="select(star)" ng-class="itemClass(star)"> {{ star.DisplayName }} </li>
         </ol>
       </div>
     </div>
