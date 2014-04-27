@@ -27,8 +27,8 @@
 <!--Left-->
 <div id="left-side">
 	<div id="search"> 
-    <form id="tfnewsearch" method="get" action="http://www.google.com">
-		        <input type="text" class="tftextinput" name="q" placeholder="search" size="40" maxlength="120"><input type="submit" value="Explore" class="tfbutton">
+    <form id="tfnewsearch" method="get">
+		        <input type="text" ng-model="keywords" class="tftextinput" name="query" placeholder="search" size="40" maxlength="120"><button ng-click="searchStars()" type="submit" class="tfbutton">Explore</button>
 		</form>
 	<div class="tfclear"></div>
 	</div>

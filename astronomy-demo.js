@@ -9,6 +9,7 @@ app.use(express.static(path.join(__dirname, '/app/')));
 //app.use(express.logger('dev'));
 
 app.get('/stars', stars.getStars);
+app.get('/search', stars.searchStars);
 
 app.listen(8080);
 console.log('Listening on port 8080...');

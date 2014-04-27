@@ -7,6 +7,7 @@ app.controller('StarController', function($scope, $http) {
 	var selectedFilter = "Distance";
 	$scope.stars = [];
 	var starsBuffered = [];
+	var currentSearch;
 	
 	$scope.switchFilter = function(filter) {
 		selectedFilter = filter;
@@ -35,11 +36,35 @@ app.controller('StarController', function($scope, $http) {
 		$scope.bufferStars(1);
 	}
 	
+	$scope.searchStars = function(search) {
+		off = 0;
+		starsBuffered = [];
+		currentSearch = $scope.keywords;
+		$scope.stars = [];
+		console.log($scope.keywords);
+		$http.get('/search', {params: {query:currentSearch,limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
+			$scope.stars.push.apply($scope.stars ,stars);
+		});
+		off += lim;
+	}
+	
 	$scope.bufferStars = function(batches) {
 		for(var i = 0; i < batches; i++) {
-			$http.get('/stars', {params: {limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
-				starsBuffered.push.apply(starsBuffered ,stars);
-			});
+			if(currentSearch) {
+				console.log("SEARCH");
+				$http.get('/search', {params: {query:currentSearch,limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
+					if(stars) {
+						starsBuffered.push.apply(starsBuffered ,stars);
+					}
+				});
+			} else {
+				console.log("GET");
+				$http.get('/stars', {params: {limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
+					if(stars) {
+						starsBuffered.push.apply(starsBuffered ,stars);
+					}
+				});
+			}
 			off += lim;
 		}
 	}
