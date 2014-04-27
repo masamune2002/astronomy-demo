@@ -35,7 +35,7 @@ font-weight:bold;
   src: local("Quicksand Bold"), local("Quicksand-Bold"), url(http://themes.googleusercontent.com/static/fonts/quicksand/v3/sKd0EMYPAh5PYCRKSryvWz8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
 
-li {list-style-type: none; font-family:Quicksand;}
+.no-style {list-style-type: none; font-family:Quicksand;}
 
 .info{
 	margin-bottom:20px;
@@ -122,6 +122,12 @@ margin-right:auto;
 	-moz-animation:fade 2.5s; /*Firefox*/
 	-webkit-animation:fade 2.5s; /* Chrome, Safari, Opera */
 	animation:fade 2.5s;
+	}
+	
+.fade-back *{
+	-moz-animation:fade-back 2.5s; /*Firefox*/
+	-webkit-animation:fade-back 2.5s; /* Chrome, Safari, Opera */
+	animation:fade-back 2.5s;
 	}
 	
 #results{
@@ -273,6 +279,14 @@ h5{
 	-webkit-animation:drop 2s; /* Chrome, Safari, Opera */
 	animation:drop 2s;
 	}
+	
+.anim-left-close{
+	width:298px;
+	height:100%;
+	-moz-animation:drop-back 2s; /*Firefox*/
+	-webkit-animation:drop-back 2s; /* Chrome, Safari, Opera */
+	animation:drop-back 2s;
+	}
 
 h2:link {color:white;}      /* unvisited link */
 h2:visited {color:white;}  /* visited link */
@@ -340,6 +354,22 @@ to {opacity:1.0}
 100% {color: white;}
 } 
 
+@-webkit-keyframes fade-back 
+{
+100%   {color: rgba(255, 255, 255, 0.0);}
+75%  {color: rgba(255, 255, 255, 0.0);}
+55%  {color: rgba(255, 255, 255, 0.5);}
+0% {color: white;}
+} 
+/* Safari and Chrome */
+@-moz-keyframes fade-back
+{
+100%   {color: rgba(255, 255, 255, 0.0);}
+75%  {color: rgba(255, 255, 255, 0.0);}
+55%  {color: rgba(255, 255, 255, 0.5);}
+0% {color: white;}
+} 
+
 @-moz-keyframes drop 
 {
 from {height:0}
@@ -350,6 +380,18 @@ to {height:600px}
 {
 from {height:0}
 to {height:600px}
+}	
+
+@-moz-keyframes drop-back
+{
+from {height:600px}
+to {height:0px}
+} 
+/* Chrome, Safari, Opera */
+@-webkit-keyframes drop-back
+{
+from {height:600px}
+to {height:0px}
 }	
 
 /*SEARCH===========================================*/

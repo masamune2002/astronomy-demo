@@ -1,50 +1,29 @@
 @charset "utf-8";
 /* CSS Document */
 
-#skew-gradient{
-	height:400px;
-	width:300px;
-	text-align:center;
-	padding-top:220px;
-	background-color:#555;
-	border:2px solid red;
-	margin:0 auto;
-	}
-	
-div.panel:before {
-    content:"";
-    /*position:absolute;
-    background: black;
-    top:0;
-    left:-25px;
-    bottom: 0;
-    width: 50px;*/
-    -webkit-transform: skew(-20deg);
-    -moz-transform: skew(-20deg);
-    -ms-transform: skew(-20deg);
-    transform: skew(-20deg);
-}
+
 
 body {
-    background:blue;
+    background:#0CF;
 }
 
 div {
-    width:200px;
-    height:100px;
-    background:black;
-    margin:15px;
+	text-align:center;
+    width:300px;
+    height:150px;
+    background:#555;
+    margin:60px;
     position:relative;
     margin-left: 50px;
 }
 div:before {
     content:"";
     position:absolute;
-    background: black;
+    background: #555;
     top:0;
-    left:-25px;
+    left:-28px;
     bottom: 0;
-    width: 50px;
+    width: 100px;
     -webkit-transform: skew(-20deg);
     -moz-transform: skew(-20deg);
     -ms-transform: skew(-20deg);

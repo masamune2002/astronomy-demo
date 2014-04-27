@@ -47,8 +47,8 @@
             </a> </div>
         </div>
       </div>
-      <div id="left-panel"> <img ng-show="filterExtended" ng-class="{ 'anim-left': filterExtended }" src="assets/img/left-panel.png">
-        <div id="filter-list" ng-show="filterExtended" ng-class="{ 'fade': filterExtended }">
+      <div id="left-panel"> <img ng-class="{ 'anim-left': filterExtended, 'anim-left-close': !filterExtended }" src="assets/img/left-panel.png">
+        <div id="filter-list"  ng-class="{ 'fade': filterExtended, 'fade-back': !filterExtended }">
           <div id="skew-dist" ng-click="switchFilter('Distance')"> <a href="#">
             <h2>Distance</h2>
             </a> </div>
