@@ -1,104 +1,115 @@
 <!doctype html>
 <html ng-app="astronomy-demo">
 <head>
-	<meta charset="utf-8">
-	<title>Search the Stars</title>
+<meta charset="utf-8">
+<title>Search the Stars</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<!--<link href="http://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" type="text/css">-->
 
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-    <!--<link href="http://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" type="text/css">-->
-
-	<script src="vendor/jquery/dist/jquery.js"></script>
-	<script src="vendor/angular/angular.js"></script>
-	<script src="vendor/jquery-csv/src/jquery.csv.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
+<script src="vendor/jquery/dist/jquery.js"></script>
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/jquery-csv/src/jquery.csv.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
 </head>
 
 <body ng-controller="StarController">
 <!--Title-->
 <div id="title">
-<div class="center" id="space"> <img src="assets/img/welcome.png"> </div>
-<div class="center" id="line"> <img src="assets/img/titlebreak.png"> </div>
-<div class="center" id="frontier"> <h1> The Final Frontier </h1> </div>
+  <div class="center" id="space"> <img src="assets/img/welcome.png"> </div>
+  <div class="center" id="line"> <img src="assets/img/titlebreak.png"> </div>
+  <div class="center" id="frontier">
+    <h1> The Final Frontier </h1>
+  </div>
 </div>
-<!--End Ttle-->
+<!--End Ttle--> 
 
 <!--Content-->
-<div id="content">
-<!--Left-->
-<div id="left-side">
-	<div id="search"> 
-    <form id="tfnewsearch" method="get">
-		        <input type="text" ng-model="keywords" class="tftextinput" name="query" placeholder="search" size="40" maxlength="120"><button ng-click="searchStars()" type="submit" class="tfbutton">Explore</button>
-		</form>
-	<div class="tfclear"></div>
-	</div>
-	<div id="filter">
-			<div ng-click="toggleFilterPanel()">
-				<div id="left-title"> <img src="assets/img/lefttitle.png"> </div>
-				<div id="left-title"> 
-					<div id="stars"> 
-						<a href="#"><h4 class="glow skew-stars">Stars</h4></a>
-						<div id="triangle-shadow" class="grad"></div>
-						<a href="#"><div id="triangle-down"></div></a>
-					</div> 
-				</div>
-			</div>
-			<div id="left-panel"> <img ng-show="filterExtended" ng-class="{ 'anim-left': filterExtended }" src="assets/img/left-panel.png">
-				<div id="filter-list" ng-show="filterExtended" ng-class="{ 'fade': filterExtended }">
-					<div id="skew-dist" ng-click="switchFilter('Distance')"> <a href="#"> <h2>Distance</h2> </a> </div>
-					<div id="skew"> <a href="#"> <h2>Name</h2> </a> </div>
-					<div id="skew" ng-click="switchFilter('Mag')"> <a href="#"> <h2>Magnitude</h2> </a> </div>
-					<div id="skew" ng-click="switchFilter('AbsMag')"> <a href="#"> <h2>Absolute Magnitude</h2> </a> </div>
-					<div id="skew" ng-click="switchFilter('ColorIndex')"> <a href="#"> <h2>Color</h2> </a> </div>
-				</div>
-            </div>
-	</div>
-</div>
-
-<!--Middle-->
-<div id="middle">
-    <div>
-    	<div id="results">
-			<h3> Results </h3>
-			<ol class="lines" ng-scroll="requestStarBatch()">
-				<li ng-class-odd="'light'" ng-class-even="'dark'" ng-repeat="star in stars" ng-click="select(star)" ng-class="itemClass(star)">
-					{{ getStarName(star) }}
-				</li>
-			</ol>
-        </div>
+<div id="content"> 
+  <!--Left-->
+  <div id="left-side">
+    <div id="search">
+      <form id="tfnewsearch" method="get">
+        <input type="text" ng-model="keywords" class="tftextinput" name="query" placeholder="search" size="40" maxlength="120">
+        <button ng-click="searchStars()" type="submit" class="tfbutton">Explore</button>
+      </form>
+      <div class="tfclear"></div>
     </div>
-</div>
-
-<!--Right-->
-<div id="right-side">
-	<div id="filter">
-		
-			<div id="right-title"> <img src="assets/img/righttitle.png"> 
-				<div id="quickinfo"> <h4 class="skew-qinfo">Quick Info</h4> </div>
-            </div>
-			 <div id="right-panel"> <img src="assets/img/right-panel.png"> 
-				<ul ng-if="selectedStar" class="info">
-					<li class="skew-info" ng-if="selectedStar.ProperName">Proper Name: {{selectedStar.ProperName}}</li>
-					<li class="skew-info" ng-if="selectedStar.Distance">Distance: {{selectedStar.Distance}}</li>
-					<li class="skew-info" ng-if="selectedStar.HIP">HIP: HIP {{selectedStar.HIP}}</li>
-					<li class="skew-info" ng-if="selectedStar.HD">HD: HD {{selectedStar.HD}}</li>
-					<li class="skew-info" ng-if="selectedStar.HR">HR: HR {{selectedStar.HR}}</li>
-					<li class="skew-info" ng-if="selectedStar.Gliese">Gliese: {{selectedStar.Gliese}}</li>
-					<li class="skew-info" ng-if="selectedStar.BayerFlamsteed">Bayer-Flamsteed: {{selectedStar.BayerFlamsteed}}</li>
-					<li class="skew-info" ng-if="selectedStar.RA">RA: {{selectedStar.RA}}</li>
-					<li class="skew-info" ng-if="selectedStar.PMRA">PMRA: {{selectedStar.PMRA}}</li>
-					<li class="skew-info" ng-if="selectedStar.PMDec">PMDec: {{selectedStar.PMDec}}</li>
-					<li class="skew-info" ng-if="selectedStar.RV">RV: {{selectedStar.RV}}</li>
-					<li class="skew-info" ng-if="selectedStar.Mag">Magnitude: {{selectedStar.Mag}}</li>
-					<li class="skew-info" ng-if="selectedStar.AbsMag">Absolue Magnitude: {{selectedStar.AbsMag}}</li>
-					<li class="skew-info" ng-if="selectedStar.Spectrum">Spectrum: {{selectedStar.Spectrum}}</li>
-					<li class="skew-info" ng-if="selectedStar.ColorIndex">Color Index: {{selectedStar.ColorIndex}}</li>
-				</ul>
-			</div>
-		
-	</div>
-</div>
-
+    <div id="filter">
+      <div ng-click="toggleFilterPanel()">
+        <div id="left-title"> <img src="assets/img/lefttitle.png"> </div>
+        <div id="left-title">
+          <div id="stars"> <a href="#">
+            <h4 class="glow skew-stars">Stars</h4>
+            </a>
+            <div id="triangle-shadow" class="grad"></div>
+            <a href="#">
+            <div id="triangle-down"></div>
+            </a> </div>
+        </div>
+      </div>
+      <div id="left-panel"> <img ng-show="filterExtended" ng-class="{ 'anim-left': filterExtended }" src="assets/img/left-panel.png">
+        <div id="filter-list" ng-show="filterExtended" ng-class="{ 'fade': filterExtended }">
+          <div id="skew-dist" ng-click="switchFilter('Distance')"> <a href="#">
+            <h2>Distance</h2>
+            </a> </div>
+          <div id="skew"> <a href="#">
+            <h2>Name</h2>
+            </a> </div>
+          <div id="skew" ng-click="switchFilter('Mag')"> <a href="#">
+            <h2>Magnitude</h2>
+            </a> </div>
+          <div id="skew" ng-click="switchFilter('AbsMag')"> <a href="#">
+            <h2>Absolute Magnitude</h2>
+            </a> </div>
+          <div id="skew" ng-click="switchFilter('ColorIndex')"> <a href="#">
+            <h2>Color</h2>
+            </a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--Middle-->
+  <div id="middle">
+    <div>
+      <div id="results">
+        <h3> Results </h3>
+        <ol class="lines" ng-scroll="requestStarBatch()">
+          <li ng-class-odd="'light'" ng-class-even="'dark'" ng-repeat="star in stars" ng-click="select(star)" ng-class="itemClass(star)"> {{ getStarName(star) }} </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  
+  <!--Right-->
+  <div id="right-side">
+    <div id="filter">
+      <div id="right-title"> <img src="assets/img/righttitle.png">
+        <div id="quickinfo">
+          <h4 class="skew-qinfo">Quick Info</h4>
+        </div>
+      </div>
+      <div id="right-panel"> <img src="assets/img/right-panel.png">
+        <ul ng-if="selectedStar" class="info">
+          <li class="skew-info" ng-if="selectedStar.ProperName">Proper Name: {{selectedStar.ProperName}}</li>
+          <li class="skew-info" ng-if="selectedStar.Distance">Distance: {{selectedStar.Distance}}</li>
+          <li class="skew-info" ng-if="selectedStar.HIP">HIP: HIP {{selectedStar.HIP}}</li>
+          <li class="skew-info" ng-if="selectedStar.HD">HD: HD {{selectedStar.HD}}</li>
+          <li class="skew-info" ng-if="selectedStar.HR">HR: HR {{selectedStar.HR}}</li>
+          <li class="skew-info" ng-if="selectedStar.Gliese">Gliese: {{selectedStar.Gliese}}</li>
+          <li class="skew-info" ng-if="selectedStar.BayerFlamsteed">Bayer-Flamsteed: {{selectedStar.BayerFlamsteed}}</li>
+          <li class="skew-info" ng-if="selectedStar.RA">RA: {{selectedStar.RA}}</li>
+          <li class="skew-info" ng-if="selectedStar.PMRA">PMRA: {{selectedStar.PMRA}}</li>
+          <li class="skew-info" ng-if="selectedStar.PMDec">PMDec: {{selectedStar.PMDec}}</li>
+          <li class="skew-info" ng-if="selectedStar.RV">RV: {{selectedStar.RV}}</li>
+          <li class="skew-info" ng-if="selectedStar.Mag">Magnitude: {{selectedStar.Mag}}</li>
+          <li class="skew-info" ng-if="selectedStar.AbsMag">Absolue Magnitude: {{selectedStar.AbsMag}}</li>
+          <li class="skew-info" ng-if="selectedStar.Spectrum">Spectrum: {{selectedStar.Spectrum}}</li>
+          <li class="skew-info" ng-if="selectedStar.ColorIndex">Color Index: {{selectedStar.ColorIndex}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 <!--End Content-->
 </body>
