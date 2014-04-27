@@ -6,6 +6,7 @@ app.controller('StarController', function($scope, $http) {
 	var off = 0;
 	var selectedFilter = "Distance";
 	$scope.stars = [];
+	var starsBuffered = [];
 	
 	$scope.switchFilter = function(filter) {
 		selectedFilter = filter;
@@ -17,13 +18,30 @@ app.controller('StarController', function($scope, $http) {
 		$scope.stars = [];
 		$scope.loadStars();
 		$scope.selectedStar = $scope.stars[0];
+		$scope.bufferStars(5);
 	}
 	
 	$scope.loadStars = function() {
 		$http.get('/stars', {params: {limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
 			$scope.stars.push.apply($scope.stars ,stars);
-			off += lim;
 		});
+		off += lim;
+	}
+	
+	$scope.requestStarBatch = function() {
+		for (var i = 0; i < lim; i++) {
+			$scope.stars.push(starsBuffered.shift());
+		}
+		$scope.bufferStars(1);
+	}
+	
+	$scope.bufferStars = function(batches) {
+		for(var i = 0; i < batches; i++) {
+			$http.get('/stars', {params: {limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
+				starsBuffered.push.apply(starsBuffered ,stars);
+			});
+			off += lim;
+		}
 	}
 	
 	$scope.select= function(item) {

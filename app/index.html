@@ -4,9 +4,6 @@
 	<meta charset="utf-8">
 	<title>Search the Stars</title>
 
-	<link rel="stylesheet" type="text/css" href="foundation/css/foundation.css">
-	<link rel="stylesheet" type="text/css" href="foundation/css/foundation.min.css">
-	<link rel="stylesheet" type="text/css" href="foundation/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
     <!--<link href="http://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" type="text/css">-->
 
@@ -14,7 +11,6 @@
 	<script src="vendor/angular/angular.js"></script>
 	<script src="vendor/jquery-csv/src/jquery.csv.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
-    <script src="js/vendor/custom.modernizr.js"></script>
 </head>
 
 <body ng-controller="StarController">
@@ -47,11 +43,13 @@
             </div>
 			<div id="left-panel"> <img class="anim-left" src="assets/img/left-panel.png">
 			<div id="filter-list">
+
 				<div id="skew-dist" ng-click="switchFilter('Distance')"> <a href="#"> <h2 class="fade">Distance</h2> </a> </div>
                 <div id="skew"> <a href="#"> <h2 class="fade">Name</h2> </a> </div>
                 <div id="skew" ng-click="switchFilter('Mag')"> <a href="#"> <h2 class="fade">Magnitude</h2> </a> </div>
                 <div id="skew" ng-click="switchFilter('AbsMag')"> <a href="#"> <h2 class="fade">Absolute Magnitude</h2> </a> </div>
                 <div id="skew" ng-click="switchFilter('ColorIndex')"> <a href="#"> <h2 class="fade">Color</h2> </a> </div>
+
 			</div>
             </div>
 	</div>
@@ -62,7 +60,7 @@
     <div>
     	<div id="results">
 			<h3> Results </h3>
-			<ol class="lines" ng-scroll="loadStars()">
+			<ol class="lines" ng-scroll="requestStarBatch()">
 				<li ng-class-odd="'light'" ng-class-even="'dark'" ng-repeat="star in stars" ng-click="select(star)" ng-class="itemClass(star)">
 					{{ getStarName(star) }}
 				</li>
