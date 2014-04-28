@@ -126,9 +126,6 @@ margin-right:auto;
 	
 .fade-back *{
 	opacity: 0;
-	-moz-animation:fade-back 2.5s; /*Firefox*/
-	-webkit-animation:fade-back 2.5s; /* Chrome, Safari, Opera */
-	animation:fade-back 2.5s;
 	}
 	
 #results{
@@ -158,7 +155,8 @@ li{
 	margin-bottom:0px; 
 	height: 30px;
 	list-style-position: inside;
-	font-size: 1.1em;
+	font-family: Quicksand;
+	font-size: 1.22em;
 	padding-left: 20px;
 	padding-top:6px;
 }
@@ -353,23 +351,7 @@ to {opacity:1.0}
 55%  {color: rgba(255, 255, 255, 0.0);}
 75%  {color: rgba(255, 255, 255, 0.5);}
 100% {color: white;}
-} 
-
-@-webkit-keyframes fade-back 
-{
-100%   {color: rgba(255, 255, 255, 0.0);}
-75%  {color: rgba(255, 255, 255, 0.0);}
-55%  {color: rgba(255, 255, 255, 0.5);}
-0% {color: white;}
-} 
-/* Safari and Chrome */
-@-moz-keyframes fade-back
-{
-100%   {color: rgba(255, 255, 255, 0.0);}
-75%  {color: rgba(255, 255, 255, 0.0);}
-55%  {color: rgba(255, 255, 255, 0.5);}
-0% {color: white;}
-} 
+}
 
 @-moz-keyframes drop 
 {
