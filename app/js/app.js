@@ -2,7 +2,7 @@ var app = angular.module('astronomy-demo', []);
 
 app.controller('StarController', function($scope, $http) {
 
-	var lim = 250;
+	var lim = 100;
 	var off = 0;
 	var selectedFilter = "Distance";
 	$scope.showFilter = false;
@@ -19,9 +19,10 @@ app.controller('StarController', function($scope, $http) {
 	$scope.initStars = function() {
 		off = 0;
 		$scope.stars = [];
+		starsBuffered = [];
 		$scope.loadStars();
 		$scope.selectedStar = $scope.stars[0];
-		$scope.bufferStars(5);
+		$scope.bufferStars();
 	}
 	
 	$scope.toggleFilterPanel = function(){
@@ -42,7 +43,7 @@ app.controller('StarController', function($scope, $http) {
 		for (var i = 0; i < lim; i++) {
 			$scope.stars.push(starsBuffered.shift());
 		}
-		$scope.bufferStars(1);
+		$scope.bufferStars();
 	}
 	
 	$scope.searchStars = function(search) {
@@ -57,25 +58,21 @@ app.controller('StarController', function($scope, $http) {
 		off += lim;
 	}
 	
-	$scope.bufferStars = function(batches) {
-		for(var i = 0; i < batches; i++) {
-			if(currentSearch) {
-				console.log("SEARCH");
-				$http.get('/search', {params: {query:currentSearch,limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
-					if(stars) {
-						starsBuffered.push.apply(starsBuffered ,stars);
-					}
-				});
-			} else {
-				console.log("GET");
-				$http.get('/stars', {params: {limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
-					if(stars) {
-						starsBuffered.push.apply(starsBuffered ,stars);
-					}
-				});
-			}
-			off += lim;
+	$scope.bufferStars = function() {
+		if(currentSearch) {
+			$http.get('/search', {params: {query:currentSearch,limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
+				if(stars) {
+					starsBuffered.push.apply(starsBuffered ,stars);
+				}
+			});
+		} else {
+			$http.get('/stars', {params: {limit:lim,offset:off,filter:selectedFilter}}).success(function(stars) {
+				if(stars) {
+					starsBuffered.push.apply(starsBuffered ,stars);
+				}
+			});
 		}
+		off += lim;
 	}
 	
 	$scope.select= function(item) {
