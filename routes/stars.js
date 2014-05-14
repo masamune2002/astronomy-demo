@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var db = mongoose.connection;
-var conString = "mongodb://localhost/astro_back";
+var conString = "mongodb://108.207.242.178/astro_back";
 db.on('error', console.error);
 var starSchema = new mongoose.Schema({
 	StarID: { type: String },

@@ -31,18 +31,24 @@ font-weight:bold;
 @font-face {
   font-family: "Quicksand";
   font-style: normal;
-  font-weight: 700;
-  src: local("Quicksand Bold"), local("Quicksand-Bold"), url(http://themes.googleusercontent.com/static/fonts/quicksand/v3/sKd0EMYPAh5PYCRKSryvWz8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+  font-weight: 400;
+  src: local("Quicksand Regular"), local("Quicksand-Regular"), url(http://themes.googleusercontent.com/static/fonts/quicksand/v3/sKd0EMYPAh5PYCRKSryvWz8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
 
 .no-style {list-style-type: none; font-family:Quicksand;}
 
 .info{
-	margin-bottom:20px;
-	margin-left:-40px;
-	width:270px;
-	margin-top:-600px;
-	color:#FC0;
+	border: 2px solid white;
+	height: 550px;
+	overflow-Y: scroll;
+	font-family: "Quicksand";
+	font-size: 14px;
+	line-height: 18px;
+	margin-bottom: 20px;
+	margin-left: -40px;
+	width: 270px;
+	margin-top: -600px;
+	color: #FC0;
 	text-shadow: 0em 0em .1em #555, 0em 0em .1em #555;
 	}
 	
@@ -70,20 +76,28 @@ margin-right:auto;
 
 #stars{
 	margin-left: 26px;
-	margin-top: -172px;
+	margin-top: -168px;
+	padding:0;
+	margin-right:0;
 	width:330px;
 	z-index:3;
 	}
 #quickinfo{
-	margin-top: -154px;
+	margin-top: -158px;
 	margin-left: 80px;
-	text-shadow: 0em 0em .8em #fff, 0em 0em .8em #fff, 0em 0em .8em #fff, 0em 0em .8em #fff
+	text-shadow: 0em 0em .8em #fff, 0em 0em .8em #fff, 0em 0em .8em #fff, 0em 0em .8em #fff;
 	}
 #left-title{
 	margin-left: 120px;
 	margin-bottom: -34px;
 	z-index:-99;
-	}
+}
+.left-title {
+	transform:scale(1, 1.1);
+	-ms-transform:scale(1, 1.1); /* IE 9 */
+	-webkit-transform:scale(1, 1.1); /* Opera, Chrome, and Safari */
+	-moz-transform:scale(1, 1.1); /* Firefox */
+}
 #left-panel{
 	margin-left: 150px;
 	margin-top:4px;
@@ -91,6 +105,12 @@ margin-right:auto;
 #right-title{
 	margin-left:60px;
 	}
+.right-title {
+	transform:scale(1, 1.1);
+	-ms-transform:scale(1, 1.1); /* IE 9 */
+	-webkit-transform:scale(1, 1.1); /* Opera, Chrome, and Safari */
+	-moz-transform:scale(1, 1.1); /* Firefox */
+}
 #right-panel{
 	margin-left: 116px;
 	margin-top:-34px;
@@ -189,7 +209,7 @@ li.active {
 	
 #content{
 	position: absolute;
-	margin-top: -50px;
+	margin-top: -80px;
 	margin-left: auto;
 	margin-right: auto;
 	}
@@ -260,7 +280,8 @@ h5{
 	-ms-transform: skew(0deg,-5deg); /* IE 9 */
 	-webkit-transform: skew(0deg,-5deg); /* Chrome, Safari, Opera */
 	transform: skew(0deg,-5deg);
-	margin-right:-40px;
+	padding:0;
+	margin-right:0;
 	}
 	
 .skew-qinfo{
@@ -282,9 +303,9 @@ h5{
 .anim-left-close{
 	width:298px;
 	height:0;
-	-moz-animation:drop-back 2s; /*Firefox*/
-	-webkit-animation:drop-back 2s; /* Chrome, Safari, Opera */
-	animation:drop-back 2s;
+	-moz-animation:drop-back .5s; /*Firefox*/
+	-webkit-animation:drop-back .5s; /* Chrome, Safari, Opera */
+	animation:drop-back .5s;
 	}
 
 h2:link {color:white;}      /* unvisited link */
@@ -294,34 +315,119 @@ h2:active {color:#71F1F4;}  /* selected link */
 
 a{text-decoration:none;}
 
-#triangle-down {
-	position: absolute;
-	top:120px;
-	left:420px;
+.small-arrow1{
 	width: 0;
 	height: 0;
-	border-left: 28px solid transparent;
-	border-right: 38px solid transparent;
-	border-top: 28px solid #4DD2FF;/*#4DD2FF*/
+	position: absolute;
+	top:20px;
+	left:250px;
+	border-left: 6px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 6px solid #FC6;
+}
+.small-arrow2{
+	width: 0;
+	height: 0;
+	position: absolute;
+	top:32px;
+	left:250px;
+	border-left: 6px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 6px solid #FC6;
+}
+.small-arrow3{
+	width: 0;
+	height: 0;
+	position: absolute;
+	top:22px;
+	left:250px;
+	border-left: 6px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 6px solid #FC6;
+}
+.small-arrow4{
+	width: 0;
+	height: 0;
+	position: absolute;
+	top:18px;
+	left:250px;
+	border-left: 6px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 6px solid #FC6;
+}
+.small-arrow5{
+	width: 0;
+	height: 0;
+	position: absolute;
+	top:20px;
+	left:250px;
+	border-left: 6px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 6px solid #FC6;
+}
+.small-arrow-rotate {
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); /* IE 9 */
+	-webkit-transform:rotate(180deg); /* Opera, Chrome, and Safari */
+}
+#triangle-down {
+	position: absolute;
+	top:118px;
+	left:440px;
+	width: 0;
+	height: 0;
+	border-left: 22px solid transparent;
+	border-right: 24px solid transparent;
+	border-top: 22px solid #4DD2FF;
+	transform:rotate(-90deg);
+	-ms-transform:rotate(-90deg); /* IE 9 */
+	-webkit-transform:rotate(-90deg); /* Opera, Chrome, and Safari */
 	z-index:2;
-	/*float:right;
-	margin-top:-120px;
-	margin-right:18px;*/
+}
+triangle-rotated {
+	transform:rotate(0deg);
+	-ms-transform:rotate(0deg); /* IE 9 */
+	-webkit-transform:rotate(0deg); /* Opera, Chrome, and Safari */
+}
+spin-down {
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* IE 9 */
+	-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
+	-moz-transform:rotate(90deg); /* Firefox */
+    -webkit-animation:spin-down .2s linear;
+    -moz-animation:spin-down .2s linear;
+    animation:spin-down .2s linear;
+}
+spin-right {
+	transform:rotate(-90deg);
+	-ms-transform:rotate(-90deg); /* IE 9 */
+	-webkit-transform:rotate(-90deg); /* Opera, Chrome, and Safari */
+	-moz-transform:rotate(-90deg); /* Firefox */
+    -webkit-animation:spin-right .2s linear;
+    -moz-animation:spin-right .2s linear;
+    animation:spin-right .2s linear;
 }
 #triangle-shadow {
 	position: absolute;
-	top:125px;
-	left:414px;
+	top:122px;
+	left:436px;
 	width: 0;
 	height: 0;
-	border-left: 28px solid transparent;
-	border-right: 38px solid transparent;
-	border-top: 28px solid #555;
+	border-left: 22px solid transparent;
+	border-right: 24px solid transparent;
+	border-top: 22px solid rgba(85, 85, 85, 0.6);
+	transform:rotate(-90deg);
+	-ms-transform:rotate(-90deg); /* IE 9 */
+	-webkit-transform:rotate(-90deg); /* Opera, Chrome, and Safari */
 	z-index:1;
-	/*float:right;
-	margin-top:-116px;
-	margin-right:10px;*/
 }
+@-moz-keyframes spin-right { 100% { -moz-transform: rotate(-90deg); } }
+@-webkit-keyframes spin-right { 100% { -webkit-transform: rotate(-90deg); } }
+@keyframes spin-right { 100% { -webkit-transform: rotate(-90deg); transform:rotate(-90deg); }
+
+@-moz-keyframes spin-down { 100% { -moz-transform: rotate(90deg); } }
+@-webkit-keyframes spin-down { 100% { -webkit-transform: rotate(90deg); } }
+@keyframes spin-down { 100% { -webkit-transform: rotate(90deg); transform:rotate(90deg); }
 
 /*Filter Animation===========================*/
 /* Firefox */
@@ -394,7 +500,7 @@ to {height:0px}
 		border-top-left-radius: 5px 5px;
 		border-bottom-left-radius: 0px 0px;
 	}
-	.tfbutton {
+	.exbutton {
 		margin: 0;
 		padding: 5px 15px;
 		font-family: Arial, Helvetica, sans-serif;
@@ -411,17 +517,17 @@ to {height:0px}
 		border-top-right-radius: 5px 5px;
 		border-bottom-right-radius: 0px 0px;
 	}
-	.tfbutton:hover {
+	.exbutton:hover {
 		text-decoration: none;
 		background: #007ead;
 		background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
 		background: -moz-linear-gradient(top,  #0095cc,  #00678e);
 	}
 	/* Fixes submit button height problem in Firefox */
-	.tfbutton::-moz-focus-inner {
+	.exbutton::-moz-focus-inner {
 	  border: 0;
 	}
-	.tfclear{
+	.exclear{
 		clear:both;
 	}
 /*=================================================*/
